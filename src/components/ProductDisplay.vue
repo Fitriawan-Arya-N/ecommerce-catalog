@@ -3,7 +3,7 @@
       <div v-if="loading">Loading...</div>
       <div v-else>
         <div v-if="displayedProducts.length > 0" :class="getBackgroundClass()">
-          <div class="card-container">
+          <div class="container">
             <div class="product-card">
               <div class="content">
                 <div class="image">
