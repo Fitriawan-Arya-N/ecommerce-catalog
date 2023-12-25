@@ -167,6 +167,7 @@
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 15px;
+    z-index: 2;
   }
   
   .customNextButton {
