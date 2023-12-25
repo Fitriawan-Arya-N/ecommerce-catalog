@@ -6,24 +6,34 @@
     <div v-else>
       <div v-for="product in displayedProducts" :key="product.id" class="product-card">
         <div class="content">
+
+
           <div class="image">
             <img :src="product.image" :alt="product.title" />
           </div>
+
+
           <div class="text">
             <h2>{{ product.title }}</h2>
             <p>{{ product.category }}</p>
             <hr />
-            <p>{{ product.description }}</p>
+            <div class="ProdDescription">{{ product.description }}</div>
           </div>
         </div>
-        <div class="text2">
-          <hr />
-          <h2 class="price">${{ product.price }}</h2>
-          <div class="btn">
-            <button class="btn-buy">Buy now</button>
-            <button class="btn-next" @click="nextProduct">Next product</button>
-          </div>
-        </div>
+
+
+            <div class="text2">
+                <hr />
+                <h2 class="price">${{ product.price }}</h2>
+                <div class="btn">
+                    <button class="btn-buy">Buy now</button>
+                    <button class="btn-next" @click="nextProduct">Next product</button>
+                </div>
+            </div>
+
+
+
+
       </div>
     </div>
   </div>

@@ -21,17 +21,15 @@
   
   .product-card {
     display: flex;
-    align-items: center;
     flex-direction: column;
     width: 70%;
-    height: 80%;
+    height: 100%;
     box-shadow: 4px 5px 5px grey;
     border-radius: 15px;
     background-color: #FFFFFF;
     padding: 50px;
-    margin: auto; 
+    margin: auto;
   }
-  
   
   .content {
     display: flex;
@@ -52,6 +50,22 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-width: 100%;
+    flex-wrap: wrap; /* Tambahkan properti ini */
+  }
+  
+  h2 {
+    font-family: var(--main-font);
+    color: var(--primary-color);
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+.ProdDescription {
+    flex: 5;
+    font-family: "Prompt", sans-serif;
+    line-height: 1.2;
+    font-size: 1.2rem;
   }
   
   .text2 {
@@ -67,20 +81,6 @@
     height: 300px;
   }
   
-  h2 {
-    font-family: var(--main-font);
-    color: var(--primary-color);
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    font-family: var(--main-font);
-    color: #1E1E1E;
-    font-size: 16px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
   
   .text hr {
     margin-bottom: 10px;
