@@ -1,0 +1,34 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .product-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+
+
+img{
+    width: 250px;
+    height: 300px;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-right: 100px;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-top: 50px;
+}
+
+/* .product-info {
+
+
+} */
