@@ -1,8 +1,8 @@
 <template>
     <div>
-    <div v-if="loading">
+      <div v-if="loading">
         <div class="loading-spinner"></div>
-    </div>
+      </div>
       <div v-else>
         <div v-if="displayedProducts.length > 0" :class="getBackgroundClass()">
           <div class="container">
@@ -22,15 +22,14 @@
                 <hr />
                 <h2 class="price">${{ displayedProducts[0].price }}</h2>
                 <div class="btn">
-                  <button class="btn-buy">Buy now</button>
-                  <button class="btn-next" @click="nextProduct">Next product</button>
+                  <button class="btn-buy" :class="{ 'btn-men': isMenCategory, 'btn-women': isWomenCategory }">Buy now</button>
+                  <button class="btn-next" @click="nextProduct" :class="{ 'btn-men': isMenCategory, 'btn-women': isWomenCategory }">Next product</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
+  
         <div v-else>
           <div class="unavailableView">
             <div class="unavailableCard">
@@ -39,8 +38,6 @@
             </div>
           </div>
         </div>
-
-        
       </div>
     </div>
   </template>
@@ -55,6 +52,14 @@
         maxIndex: 20,
         category: '',
       };
+    },
+    computed: {
+      isMenCategory() {
+        return this.displayedProducts.length > 0 && this.displayedProducts[0].category === "men's clothing";
+      },
+      isWomenCategory() {
+        return this.displayedProducts.length > 0 && this.displayedProducts[0].category === "women's clothing";
+      },
     },
     mounted() {
       this.fetchProducts();
@@ -81,16 +86,16 @@
         this.currentIndex = (this.currentIndex % this.maxIndex) + 1;
         this.fetchProducts();
       },
-        getBackgroundClass() {
-            const category = this.displayedProducts.length > 0 ? this.displayedProducts[0].category : '';
-            if (category === "men's clothing") {
-                return "BackgroundMan";
-            } else if (category === "women's clothing") {
-                return "BackgroundWoman";
-            } else {
-                return "BackgroundUnavailable";
-            }
-        },
+      getBackgroundClass() {
+        const category = this.displayedProducts.length > 0 ? this.displayedProducts[0].category : '';
+        if (category === "men's clothing") {
+          return "BackgroundMan";
+        } else if (category === "women's clothing") {
+          return "BackgroundWoman";
+        } else {
+          return "BackgroundUnavailable";
+        }
+      },
     },
   };
   </script>
