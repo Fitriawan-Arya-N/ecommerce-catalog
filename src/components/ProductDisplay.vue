@@ -1,82 +1,93 @@
-<!-- src/components/ProductDisplay.vue -->
-
 <template>
-  <div class="card-container">
-    <div v-if="loading">Loading...</div>
-    <div v-else>
-      <div v-for="product in displayedProducts" :key="product.id" class="product-card">
-        <div class="content">
-
-
-          <div class="image">
-            <img :src="product.image" :alt="product.title" />
-          </div>
-
-
-          <div class="text">
-            <h2>{{ product.title }}</h2>
-            <p>{{ product.category }}</p>
-            <hr />
-            <div class="ProdDescription">{{ product.description }}</div>
+    <div>
+      <div v-if="loading">Loading...</div>
+      <div v-else>
+        <div v-if="displayedProducts.length > 0" :class="getBackgroundClass()">
+          <div class="card-container">
+            <div class="product-card">
+              <div class="content">
+                <div class="image">
+                  <img :src="displayedProducts[0].image" :alt="displayedProducts[0].title" />
+                </div>
+                <div class="text">
+                  <h2>{{ displayedProducts[0].title }}</h2>
+                  <p>{{ displayedProducts[0].category }}</p>
+                  <hr />
+                  <div class="ProdDescription">{{ displayedProducts[0].description }}</div>
+                </div>
+              </div>
+              <div class="text2">
+                <hr />
+                <h2 class="price">${{ displayedProducts[0].price }}</h2>
+                <div class="btn">
+                  <button class="btn-buy">Buy now</button>
+                  <button class="btn-next" @click="nextProduct">Next product</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
 
-            <div class="text2">
-                <hr />
-                <h2 class="price">${{ product.price }}</h2>
-                <div class="btn">
-                    <button class="btn-buy">Buy now</button>
-                    <button class="btn-next" @click="nextProduct">Next product</button>
-                </div>
+        <div v-else>
+          <div class="unavailableView">
+            <div class="unavailableCard">
+              This product is unavailable to show
+              <button type="button" @click="nextProduct" class="customNextButton">Next Product</button>
             </div>
+          </div>
+        </div>
 
-
-
-
+        
       </div>
     </div>
-  </div>
-</template>
-
-
-
-
-
-<script>
-export default {
-  data() {
-    return {
-      displayedProducts: [],
-      loading: true,
-      currentIndex: 1,
-    };
-  },
-  mounted() {
-    this.fetchProducts();
-  },
-  methods: {
-    fetchProducts() {
-      fetch(`https://fakestoreapi.com/products/${this.currentIndex}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.category === "men's clothing" || data.category === "women's clothing") {
-            this.displayedProducts = [data];
-          } else {
-            this.displayedProducts = [];
-          }
-          this.loading = false;
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-          this.loading = false;
-        });
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        displayedProducts: [],
+        loading: true,
+        currentIndex: 1,
+        maxIndex: 20,
+        category: '', // Set the category based on your data or logic
+      };
     },
-    nextProduct() {
-      this.currentIndex = (this.currentIndex % 20) + 1;
+    mounted() {
       this.fetchProducts();
     },
-  },
-};
-</script>
-
+    methods: {
+      fetchProducts() {
+        fetch(`https://fakestoreapi.com/products/${this.currentIndex}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.category === "men's clothing" || data.category === "women's clothing") {
+              this.displayedProducts = [data];
+            } else {
+              this.displayedProducts = [];
+            }
+            this.loading = false;
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+            this.loading = false;
+          });
+      },
+      nextProduct() {
+        this.currentIndex = (this.currentIndex % this.maxIndex) + 1;
+        this.fetchProducts();
+      },
+        getBackgroundClass() {
+            const category = this.displayedProducts.length > 0 ? this.displayedProducts[0].category : '';
+            if (category === "men's clothing") {
+                return "BackgroundMan";
+            } else if (category === "women's clothing") {
+                return "BackgroundWoman";
+            } else {
+                return "BackgroundUnavailable";
+            }
+        },
+    },
+  };
+  </script>
