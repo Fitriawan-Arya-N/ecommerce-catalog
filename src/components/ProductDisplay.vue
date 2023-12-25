@@ -1,6 +1,8 @@
 <template>
     <div>
-      <div v-if="loading">Loading...</div>
+    <div v-if="loading">
+        <div class="loading-spinner"></div>
+    </div>
       <div v-else>
         <div v-if="displayedProducts.length > 0" :class="getBackgroundClass()">
           <div class="container">
@@ -51,7 +53,7 @@
         loading: true,
         currentIndex: 1,
         maxIndex: 20,
-        category: '', // Set the category based on your data or logic
+        category: '',
       };
     },
     mounted() {
@@ -59,6 +61,7 @@
     },
     methods: {
       fetchProducts() {
+        this.loading = true;
         fetch(`https://fakestoreapi.com/products/${this.currentIndex}`)
           .then(response => response.json())
           .then(data => {
