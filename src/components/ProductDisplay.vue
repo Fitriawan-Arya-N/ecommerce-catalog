@@ -16,7 +16,7 @@
                 <img :src="displayedProducts[0].image" :alt="displayedProducts[0].title" />
               </div>
               <div class="text">
-                <h2>{{ displayedProducts[0].title }}</h2>
+                <h2 :style="{ color: h2Color }">{{ displayedProducts[0].title }}</h2>
                 <div class="product-info">
                   <p class="category">
                     {{ displayedProducts[0].category }}
@@ -103,6 +103,9 @@ export default {
         this.displayedProducts.length > 0 &&
         this.displayedProducts[0].category === "women's clothing"
       );
+    },
+    h2Color() {
+      return this.isMenCategory ? '#002772' : (this.isWomenCategory ? '#720060' : '');
     },
   },
   mounted() {
