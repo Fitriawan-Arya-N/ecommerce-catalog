@@ -283,14 +283,19 @@ img {
   justify-content: space-between; /* Add space between the elements */
 }
 
+.product-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Add this line to separate category and rating-container */
+}
+
 .category {
   margin-bottom: 5px;
 }
 
 .rating-container {
   display: flex;
-  align-items: center;
-  margin-left: 425px;
+  align-items: flex-end;
 }
 
 .product-card {
@@ -298,7 +303,4 @@ img {
   justify-content: space-between;
 }
 
-.product-info {
-  display: flex;
-  align-items: center;
-}
+
