@@ -81,9 +81,6 @@ img {
   margin-top: 5px;
 }
 
-.garisbawah {
-}
-
 .text {
   margin-bottom: 10px;
 }
@@ -255,47 +252,41 @@ img {
   margin-right: 5px;
 }
 
-/* Style untuk bola-bola rating yang terisi sesuai rating */
 .filled {
   background-color: #720060;
   border-color: #720060;
 }
 
-/* Style untuk bola-bola rating wanita */
 .circle-woman {
   border-color: #720060;
   background-color: white;
 }
 
-/* Style untuk bola-bola rating wanita yang terisi sesuai rating */
 .circle-woman-filled {
   background-color: #720060;
   border-color: #720060;
 }
 
-/* Style untuk bola-bola rating pria */
 .circle-man {
   border-color: #002772;
   background-color: white;
 }
 
-/* Style untuk bola-bola rating pria yang terisi sesuai rating */
 .circle-man-filled {
   background-color: #002772;
   border-color: #002772;
 }
 
-/* Style untuk teks kategori dan rating container sejajar */
 .category-rating-container {
   display: flex;
-  align-items: center; /* Align vertically in the middle */
-  justify-content: space-between; /* Add space between the elements */
+  align-items: center;
+  justify-content: space-between;
 }
 
 .product-info {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Add this line to separate category and rating-container */
+  justify-content: space-between;
 }
 
 .category {
