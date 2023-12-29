@@ -17,7 +17,7 @@
               <div class="text">
                 <h2 :style="{ color: h2Color }">{{ displayedProducts[0].title }}</h2>
                 <div class="product-info">
-                  
+
                   <p class="category">
                     {{ displayedProducts[0].category }}
                   </p>
@@ -83,6 +83,7 @@
         category: '',
       };
     },
+
     computed: {
       isMenCategory() {
         return (
@@ -103,6 +104,7 @@
     mounted() {
       this.fetchProducts();
     },
+    
     methods: {
       fetchProducts() {
         this.loading = true;
