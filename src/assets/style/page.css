@@ -293,15 +293,18 @@ img {
   margin-bottom: 5px;
 }
 
-.rating-container {
-  display: flex;
-  align-items: flex-end;
-}
 
 .product-card {
   display: flex;
   justify-content: space-between;
 }
+
+.rating-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+
 
 
 

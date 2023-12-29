@@ -17,13 +17,16 @@
               <div class="text">
                 <h2 :style="{ color: h2Color }">{{ displayedProducts[0].title }}</h2>
                 <div class="product-info">
+                  
                   <p class="category">
                     {{ displayedProducts[0].category }}
                   </p>
+
                   <div v-if="isWomenCategory || isMenCategory" class="rating-container">
                     <div class="rating">
                       {{ displayedProducts[0].rating.rate }}/5
                     </div>
+
                     <div class="circle-container">
                       <div v-for="i in 5" :key="i" class="circle" :class="{
                           'filled': i <= Math.floor(displayedProducts[0].rating.rate),
@@ -32,6 +35,7 @@
                         }"></div>
                     </div>
                   </div>
+
                 </div>
                 <hr class="garisatas" />
                 <div class="ProdDescription">{{ displayedProducts[0].description }}</div>
